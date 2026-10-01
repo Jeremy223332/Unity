@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build VRChat World via Cloud 🚀
+    name: Build VRChat World
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,9 +18,7 @@ jobs:
       - name: Build VRChat World
         uses: gameci/unity-builder@v4
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSING_SERVER: ${{ secrets.UNITY_LICENSING_SERVER }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: StandaloneWindows64
           unityVersion: 2022.3.22f1
