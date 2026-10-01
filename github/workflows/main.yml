@@ -1,24 +1,26 @@
 name: VRChat Cloud Build Pipeline
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [ main ]
 
 jobs:
   build:
-    name: Build VRChat World via Cloud
+    name: Build VRChat World via Cloud 🚀
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout your project files from the repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      # 2. Setup Unity environment using GameCI builder
-      - name: Setup Unity Project
+      - name: Build VRChat World
         uses: gameci/unity-builder@v4
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_LICENSING_SERVER: ${{ secrets.UNITY_LICENSING_SERVER }}
         with:
           targetPlatform: StandaloneWindows64
+          unityVersion: 2022.3.22f1
